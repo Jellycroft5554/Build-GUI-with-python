@@ -1,0 +1,22 @@
+from tkinter import *
+
+window = Tk()
+window.geometry("1000x1000")
+window.config(background=    "#FF0000")
+
+Email = Label(window, text="Email:",font=("comic sans ms", 15), bg="white", fg="black",height=1, width= 10, anchor="center")
+Email.grid(row=0, column=1, padx=20, pady=20)
+
+Eentry = Entry(window, font=("ComicSansms", 20))
+Eentry.grid(row=0, column=2, padx=20, pady=20)
+
+Password = Label(window, text="Password:",font=("comic sans ms", 15), bg="white", fg="black",height=1, width= 10, anchor="center")
+Password.grid(row=1, column=1, padx=20, pady=20)
+
+Pentry = Entry(window, font=("ComicSansms", 20))
+Pentry.grid(row=1, column=2, padx=20, pady=20)
+
+Email = Label(window, text="What food would you like: Chicken sandwich, B.L.T, Veg sandwich? or None:",font=("comic sans ms", 15), bg="white", fg="black",height=1, width= 60, anchor="center")
+Email.grid(row=2, column=1, padx=20, pady=20, columnspan=2)
+
+window.mainloop()
