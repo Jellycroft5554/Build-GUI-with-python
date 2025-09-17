@@ -1,22 +1,58 @@
 from tkinter import *
+import tkinter as tk
 
-window = Tk()
-window.geometry("1000x1000")
-window.config(background=    "#FF0000")
+root = tk.Tk()
+root.configure(bg="red")
+root.geometry("1500x1000")
 
-Email = Label(window, text="Email:",font=("comic sans ms", 15), bg="white", fg="black",height=1, width= 10, anchor="center")
-Email.grid(row=0, column=1, padx=20, pady=20)
+Label(root, text="Email", bg="red", fg="white", width=30, font=("Comic sans ms",30, "bold")).grid(row=0, column=0, padx=5, pady=42)
+email_entry = Entry(root, font=("Comic sans ms",20, "bold"))
+email_entry.grid(row=0, column=1, padx=5, pady=42)
 
-Eentry = Entry(window, font=("ComicSansms", 20))
-Eentry.grid(row=0, column=2, padx=20, pady=20)
+Label(root, text="Password", bg="red", fg="white", width=30, font=("Comic sans ms",30, "bold")).grid(row=1, column=0, padx=5, pady=42)
+password_entry = Entry(root, font=("Comic sans ms",20, "bold"))
+password_entry.grid(row=1, column=1, padx=5, pady=42)
 
-Password = Label(window, text="Password:",font=("comic sans ms", 15), bg="white", fg="black",height=1, width= 10, anchor="center")
-Password.grid(row=1, column=1, padx=20, pady=20)
+Label(root, text="What food would you like: Chicken sandwich, B.L.T, Veg sandwich? or None", 
+         bg="red", fg="white", font=("Comic sans ms",20, "bold")).grid(row=2, column=0, columnspan=2, padx=5, pady=5)
 
-Pentry = Entry(window, font=("ComicSansms", 20))
-Pentry.grid(row=1, column=2, padx=20, pady=20)
+food_frame = Frame(root, bg="red", width=30)
+food_frame.grid(row=3, column=0, columnspan=2, padx=100, pady=20)
 
-Email = Label(window, text="What food would you like: Chicken sandwich, B.L.T, Veg sandwich? or None:",font=("comic sans ms", 15), bg="white", fg="black",height=1, width= 60, anchor="center")
-Email.grid(row=2, column=1, padx=20, pady=20, columnspan=2)
+food_scroll = Spinbox(food_frame,from_=1,to=10, width=30, state="readonly", font=("Comic sans ms",30, "bold"))
+food_scroll.pack(side=tk.RIGHT, fill=tk.Y, padx=20)
 
-window.mainloop()
+food_list = ["Chicken sandwich", "B.L.T", "Veg sandwich", "None"]
+food_spin = Spinbox(food_frame, value=food_list, state="readonly", font=("Comic sans ms",30, "bold"))
+food_spin.pack()
+
+Label(root, text="What beverage would you like: Cola, Fanta, Orange Juice, Water or None?", 
+         bg="red", fg="white", font=("Comic sans ms",20, "bold")).grid(row=4, column=0, columnspan=2, padx=5, pady=5)
+
+bev_frame = Frame(root, bg="red", width=30)
+bev_frame.grid(row=5, column=0, columnspan=2, padx=100, pady=20)
+
+bev_scroll = Spinbox(bev_frame,from_=1,to=10, width=30, state="readonly", font=("Comic sans ms",30, "bold"))
+bev_scroll.pack(side=tk.RIGHT, fill=tk.Y, padx=20)
+
+bev_list = ["Cola", "Fanta", "Orange Juice", "Water", "None"]
+bev_spin = Spinbox(bev_frame, value=bev_list, state="readonly", font=("Comic sans ms",30, "bold"))
+bev_spin.pack()
+
+tk.Label(root, text="What dessert would you like: An Ice Cream, an Ice Lolly or a Chocolate Cake or None?", 
+         bg="red", fg="white", font=("Comic sans ms",20, "bold")).grid(row=6, column=0, columnspan=2, padx=5, pady=5)
+
+des_frame = Frame(root, bg="red", width=30)
+des_frame.grid(row=7, column=0, columnspan=2, padx=100, pady=20)
+
+des_scroll = Spinbox(des_frame,from_=1,to=10, width=30, state="readonly", font=("Comic sans ms",30, "bold"))
+des_scroll.pack(side=tk.RIGHT, fill=tk.Y, padx=20)
+
+des_list = ["Ice Cream", "Ice Lolly", "Chocolate Cake", "None"]
+des_spin = Spinbox(des_frame, value=des_list, state="readonly", font=("Comic sans ms",30, "bold"))
+des_spin.pack()
+
+submit_button = Button(root, text="Submit Order", width=30, font=("Comic sans ms",30, "bold"), command=root.destroy)
+submit_button.grid(row=8, column=0, columnspan=2, pady=20)
+
+root.mainloop()
