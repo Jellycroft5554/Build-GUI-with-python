@@ -6,6 +6,29 @@ root = tk.Tk()
 root.configure(bg="#e16161")
 root.geometry("1500x1400")
 
+def date_only(dhar):
+    if dhar == "":
+        return True
+    
+    if len(dhar)>5:
+        return False
+    
+    for c in dhar:
+
+        if not (c.isdigit() or c=="/"):
+            return False
+    
+    
+    if len(dhar)==2 and "/" not in dhar:
+        dhar+="/"
+        Exp.delete(0,tk.END)
+        Exp.insert(0,dhar)
+
+
+    return True
+
+    
+
 def number_only(char):
     return char.isdigit() or char==""
 
@@ -13,7 +36,7 @@ tk.Label(root, text="Hello, would you like to place an order or pick up?", bg="#
 order_pick = tk.Entry(root, font=("Comic sans ms",20, "bold"))
 order_pick.grid(row=0, column=1, padx=5, pady=42)
 
-tk.Label(root, text="Name the order is under;", bg="#e16161", fg="white", width=30, font=("Comic sans ms",20, "bold")).grid(row=1, column=0, padx=5, pady=42)
+tk.Label(root, text="Name the order is under:", bg="#e16161", fg="white", width=30, font=("Comic sans ms",20, "bold")).grid(row=1, column=0, padx=5, pady=42)
 Name_order = tk.Entry(root, font=("Comic sans ms",20, "bold"))
 Name_order.grid(row=1, column=1, padx=5, pady=42)
 
@@ -70,19 +93,19 @@ des_spin = tk.Spinbox(des_frame, value=des_list, state="readonly", font=("Comic 
 des_spin.pack()
 
 tk.Label(root, text="Card number", bg="#e16161", fg="white", width=10, font=("Comic sans ms",20, "bold")).grid(row=11, column=0, padx=20, pady=20)
-Card = tk.Entry(root, font=("Comic sans ms",20, "bold"))
+Card = tk.Entry(root, font=("Comic sans ms",20, "bold"), validate="key", validatecommand=(root.register(number_only),"%P"))
 Card.grid(row=11, column=1, padx=20, pady=20)
 
 tk.Label(root, text="CVV", bg="#e16161", fg="white", width=10, font=("Comic sans ms",20, "bold")).grid(row=12, column=0, padx=20, pady=20)
-CVV = Entry(root, font=("Comic sans ms",20, "bold"), validatecommand=(root.register(number_only),"%P"))
+CVV = Entry(root, font=("Comic sans ms",20, "bold"), validate="key", validatecommand=(root.register(number_only),"%P"))
 CVV.grid(row=12, column=1, padx=20, pady=20)
 
 tk.Label(root, text="Exp", bg="#e16161", fg="white", width=10, font=("Comic sans ms",20, "bold")).grid(row=13, column=0, padx=20, pady=20)
-Exp = tk.Entry(root, font=("Comic sans ms",20, "bold"))
+Exp = tk.Entry(root, font=("Comic sans ms",20, "bold"), validate="key", validatecommand=(root.register(date_only),"%P"))
 Exp.grid(row=13, column=1, padx=20, pady=20)
 
 tk.Label(root, text="Pin", bg="#e16161", fg="white", width=10, font=("Comic sans ms",20, "bold")).grid(row=14, column=0, padx=20, pady=20)
-Pin = tk.Entry(root, font=("Comic sans ms",20, "bold"), show="*")
+Pin = tk.Entry(root, font=("Comic sans ms",20, "bold"), show="*", validate="key", validatecommand=(root.register(number_only),"%P"))
 Pin.grid(row=14, column=1, padx=20, pady=20)
 
 def bar_determinate():
