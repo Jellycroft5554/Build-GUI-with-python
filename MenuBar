@@ -1,0 +1,37 @@
+from tkinter import *
+from tkinter.ttk import *
+
+window=Tk()
+window.geometry("1000x1000")
+window.config(bg="#e16161")
+
+menubar=Menu(window)
+
+#adding file menu and commands
+#add_cascade creates a new menu by assosiating menu to parent menu
+#add_command helps in adding menu options to the menu
+#add_separator adds a line between different functions
+#add_checkbutton
+
+file=Menu(menubar, tearoff=0)
+menubar.add_cascade(label="File",menu=file)
+file2=Menu(file, tearoff=1)
+file.add_cascade(label="New File",menu=file2)
+file.add_command(label="Open File", command= None)
+file.add_separator()
+file2.add_command(label="Drag File", command= None)
+#
+#
+#
+edit=Menu(menubar, tearoff=0)
+menubar.add_cascade(label="Edit", menu=edit)
+edit.add_command(label="Undo", command= None)
+edit.add_command(label="Redo", command= None)
+edit.add_separator()
+edit.add_checkbutton(label="Find", command= None)
+
+#display menu
+
+window.config(menu=menubar)
+
+window.mainloop()
