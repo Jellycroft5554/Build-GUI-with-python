@@ -1,0 +1,42 @@
+from tkinter import *
+import tkinter.font as font
+
+my_window = Tk()
+my_window.title("Rock Paper Scissors!")
+
+Title=Label(text="Rock Paper Scissors!", font=100, fg="grey")
+Title.grid(row=0, column=1)
+
+Welcome=Label(text="welcome", font=30 ,fg="green")
+Welcome.grid(row=1, column=1)
+
+Options=Label(text="Your Options:", font= 30)
+Options.grid(row=2, column=0, pady=20, padx=20)
+
+Rock=Button(text="Rock", width=10, height= 1)
+Rock.grid(row=3, column=0, pady=20)
+
+Paper=Button(text="Paper", width=10, height= 1)
+Paper.grid(row=3, column=1, padx=20)
+
+Scissors=Button(text="Scissors", width=10, height= 1)
+Scissors.grid(row=3, column=2, padx=20)
+
+Score=Label(text="Score:", font= 30)
+Score.grid(row=4, column=0)
+
+player_selected=Label(text="You Selected:", font= 30)
+player_selected.grid(row=5, column=1, pady=20)
+
+Player_Score=Label(text="Player Score:", font= 30)
+Player_Score.grid(row=5, column=2, pady=20)
+
+Computer_selected=Label(text="Computer Selected:", font= 30)
+Computer_selected.grid(row=6, column=1)
+
+Computer_Score=Label(text="Computer Score:", font= 30)
+Computer_Score.grid(row=6, column=2)
+
+
+my_window.geometry("500x500")
+my_window.mainloop()
