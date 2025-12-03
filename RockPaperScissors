@@ -1,155 +1,89 @@
 from tkinter import *
-import tkinter.font as font
 import random
 
+# --- Globals ---
 my_window = Tk()
-
 C_Score = 0
 P_Score = 0
+Computer_List = ["Rock", "Paper", "Scissors"]
 
-Computer_List=["Rock", "Paper", "Scissors"]
-
+# --- Selection functions ---
 def Selection_Rock():
     Player_Select = "Rock"
     Computer_Select = random.choice(Computer_List)
-    
     winner_decider(Player_Select, Computer_Select)
 
 def Selection_Paper():
-    Player_Select="Paper"
+    Player_Select = "Paper"
     Computer_Select = random.choice(Computer_List)
-    
     winner_decider(Player_Select, Computer_Select)
 
 def Selection_Scissors():
-    Player_Select="Scissors"
+    Player_Select = "Scissors"
     Computer_Select = random.choice(Computer_List)
-    
     winner_decider(Player_Select, Computer_Select)
 
-
+# --- Winner logic ---
 def winner_decider(Player_Select, Computer_Select):
+    global P_Score, C_Score
 
-    if Computer_Select == "Rock" and Player_Select == "Rock":
+    # show selections
+    player_selected.config(text="You Selected: " + Player_Select)
+    Computer_selected.config(text="Computer Selected: " + Computer_Select)
 
-        player_selected.config(text="You Selected: Rock")
-        Player_Score.config(text="Player Score:"+str(P_Score))
+    # determine result
+    if Player_Select == Computer_Select:
+        # tie: no score change
+        pass
+    elif (Player_Select == "Rock" and Computer_Select == "Scissors") or \
+         (Player_Select == "Paper" and Computer_Select == "Rock") or \
+         (Player_Select == "Scissors" and Computer_Select == "Paper"):
+        P_Score += 1
+    else:
+        C_Score += 1
 
-        Computer_selected.config(text="Computer Selected: Rock")
-        Player_Score.config(text="Computer Score:"+str(C_Score))
+    # update score labels
+    Player_Score.config(text="Player Score: " + str(P_Score))
+    Computer_Score.config(text="Computer Score: " + str(C_Score))
 
-    elif Computer_Select == "Rock" and Player_Select == "Paper":
+# --- UI Setup ---
+my_window.title("Rock Paper Scissors!")
+my_window.geometry("480x320")
+# Use explicit font tuples to avoid TypeError on some systems
+header_font = ("Helvetica", 16, "bold")
+label_font = ("Helvetica", 11)
 
-        P_Score = P_Score + 1
+Title = Label(my_window, text="Rock Paper Scissors!", font=header_font, fg="grey")
+Title.grid(row=0, column=1, pady=(10,5))
 
-        player_selected.config(text="You Selected: Paper")
-        Player_Score.config(text="Player Score:"+str(P_Score))
-
-        Computer_selected.config(text="Computer Selected: Rock")
-        Computer_Score.config(text="Computer Score:"+str(C_Score))
-
-
-    elif Computer_Select == "Rock" and Player_Select == "Scissors":
-
-        C_Score = C_Score + 1
-
-        player_selected.config(text="You Selected: Scissors")
-        Player_Score.config(text="Player Score:"+str(P_Score))
-
-        Computer_selected.config(text="Computer Selected: Rock")
-        Computer_Score.config(text="Computer Score:"+str(C_Score))
-
-    elif Computer_Select == "Paper" and Player_Select == "Rock":
-
-        C_Score = C_Score + 1
-
-        player_selected.config(text="You Selected: Rock")
-        Player_Score.config(text="Player Score:"+str(P_Score))
-
-        Computer_selected.config(text="Computer Selected: Paper")
-        Computer_Score.config(text="Computer Score:"+str(C_Score))
-
-    elif Computer_Select == "Paper" and Player_Select == "Paper":
-
-        player_selected.config(text="You Selected: Paper")
-        Player_Score.config(text="Player Score:"+str(P_Score))
-
-        Computer_selected.config(text="Computer Selected: Paper")
-        Computer_Score.config(text="Computer Score:"+str(C_Score))
-
-    elif Computer_Select == "Paper" and Player_Select == "Scissors":
-
-        P_Score = P_Score + 1
-
-        player_selected.config(text="You Selected: Scissors")
-        Player_Score.config(text="Player Score:"+str(P_Score))
-
-        Computer_selected.config(text="Computer Selected: Paper")
-        Computer_Score.config(text="Computer Score:"+str(P_Score))
-
-    elif Computer_Select == "Scissors" and Player_Select == "Rock":
-
-        P_Score = P_Score + 1
-
-        player_selected.config(text="You Selected: Rock")
-        Player_Score.config(text="Player Score:"+str(P_Score))
-
-        Computer_selected.config(text="Computer Selected: Scissors")
-        Computer_Score.config(text="Computer Score:"+str(C_Score))
-
-    elif Computer_Select == "Scissors" and Player_Select == "Paper":
-
-        C_Score = C_Score + 1
-
-        player_selected.config(text="You Selected: Paper")
-        Player_Score.config(text="Player Score:"+str(P_Score))
-
-        Computer_selected.config(text="Computer Selected: Scissors")
-        Computer_Score.config(text="Computer Score:"+str(C_Score))
-
-    elif Computer_Select == "Scissors" and Player_Select == "Scissors":
-
-        player_selected.config(text="You Selected: Scissors")
-        Player_Score.config(text="Player Score:"+str(P_Score))
-
-        Computer_selected.config(text="Computer Selected: Scissors")
-        Computer_Score.config(text="Computer Score:"+str(C_Score))
-
-    my_window = Tk()
-    my_window.title("Rock Paper Scissors!")
-
-Title=Label(text="Rock Paper Scissors!", font=100, fg="grey")
-Title.grid(row=0, column=1)
-
-Welcome=Label(text="welcome", font=30 ,fg="green")
+Welcome = Label(my_window, text="Welcome", font=label_font, fg="green")
 Welcome.grid(row=1, column=1)
 
-Options=Label(text="Your Options:", font= 30)
-Options.grid(row=2, column=0, pady=20, padx=20)
+Options = Label(my_window, text="Your Options:", font=label_font)
+Options.grid(row=2, column=0, pady=10, padx=10)
 
-Rock=Button(text="Rock", width=10, height= 1, command=Selection_Rock)
-Rock.grid(row=3, column=0, pady=20)
+Rock = Button(my_window, text="Rock", width=10, command=Selection_Rock)
+Rock.grid(row=3, column=0, pady=8)
 
-Paper=Button(text="Paper", width=10, height= 1, command=Selection_Paper)
-Paper.grid(row=3, column=1, padx=20)
+Paper = Button(my_window, text="Paper", width=10, command=Selection_Paper)
+Paper.grid(row=3, column=1, padx=6)
 
-Scissors=Button(text="Scissors", width=10, height= 1, command=Selection_Scissors)
-Scissors.grid(row=3, column=2, padx=20)
+Scissors = Button(my_window, text="Scissors", width=10, command=Selection_Scissors)
+Scissors.grid(row=3, column=2, padx=6)
 
-Score=Label(text="Score:", font= 30)
-Score.grid(row=4, column=0)
+Score = Label(my_window, text="Score:", font=label_font)
+Score.grid(row=4, column=0, pady=(10,0))
 
-player_selected=Label(text="You Selected:", font= 30)
-player_selected.grid(row=5, column=1, pady=20)
+player_selected = Label(my_window, text="You Selected:", font=label_font)
+player_selected.grid(row=5, column=1, pady=8)
 
-Player_Score=Label(text="Player Score:", font= 30)
-Player_Score.grid(row=5, column=2, pady=20)
+Player_Score = Label(my_window, text="Player Score: 0", font=label_font)
+Player_Score.grid(row=5, column=2, pady=8)
 
-Computer_selected=Label(text="Computer Selected:", font= 30)
+Computer_selected = Label(my_window, text="Computer Selected:", font=label_font)
 Computer_selected.grid(row=6, column=1)
 
-Computer_Score=Label(text="Computer Score:", font= 30)
+Computer_Score = Label(my_window, text="Computer Score: 0", font=label_font)
 Computer_Score.grid(row=6, column=2)
 
-my_window.geometry("500x500")
 my_window.mainloop()
