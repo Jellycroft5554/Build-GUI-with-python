@@ -1,0 +1,89 @@
+import tkinter
+import math
+import tkinter.messagebox
+import random
+import time
+
+root = tkinter.Tk()
+root.geometry("600x500")
+root.title("Jumble Words!")
+root.config(background=    "#FFFFFF")
+
+#monkey, gorilla, dog, cat, giraffe, elephant, rabit, anteater, wolf, donkey
+word_list=["kenom","lgaliro","gdo","tac","rafigef","peheatnl","birat","eetatrn", "fwol", "kendoy"]
+word=random.choice(word_list)
+
+def reset_bg():
+    root.config(bg="#FFFFFF")
+
+def check_word():
+
+    if word=="kemom" and guess.get()=="monkey":
+        win_lose.config(text="well done :D")
+        root.config(background=    "#00FF0D")
+        root.after(500, reset_bg)
+
+    elif word=="lgaliro" and guess.get()=="gorilla":
+        win_lose.config(text="well done :D")
+        root.config(background=    "#00FF0D")
+        root.after(500, reset_bg)
+
+    elif word=="gdo" and guess.get()=="dog":
+        win_lose.config(text="well done :D")
+        root.config(background=    "#00FF0D")
+        root.after(500, reset_bg)
+
+    elif word=="tac" and guess.get()=="cat":
+        win_lose.config(text="well done :D")
+        root.config(background=    "#00FF0D")
+        root.after(500, reset_bg)
+
+    elif word=="rafigef" and guess.get()=="giraffe":
+        win_lose.config(text="well done :D")
+        root.config(background=    "#00FF0D")
+        root.after(500, reset_bg)
+
+    elif word=="peheatnl" and guess.get()=="elephant":
+        win_lose.config(text="well done :D")
+        root.config(background=    "#00FF0D")
+        root.after(500, reset_bg)
+
+    elif word=="birat" and guess.get()=="rabit":
+        win_lose.config(text="well done :D")
+        root.config(background=    "#00FF0D")
+        root.after(500, reset_bg)
+
+    elif word=="eetatrn" and guess.get()=="anteater":
+        win_lose.config(text="well done :D")
+        root.config(background=    "#00FF0D")
+        root.after(500, reset_bg)
+
+
+    elif word=="fwol" and guess.get()=="wolf":
+        win_lose.config(text="well done :D")
+        root.config(background=    "#00FF0D")
+        root.after(500, reset_bg)
+
+    elif word=="kendoy" and guess.get()=="donkey":
+        win_lose.config(text="well done :D")
+        root.config(background=    "#00FF0D")
+        root.after(500, reset_bg)
+
+    else:
+        win_lose.config(text="You lose :C")
+        root.config(background=    "#FF0000")
+        root.after(500, reset_bg)
+
+jumbled_word=tkinter.Label(root, text=word)
+jumbled_word.grid(column=0, row=0, padx=50, pady=50)
+
+guess=tkinter.Entry(root)
+guess.grid(column=1, row=0, padx=50, pady=50)
+
+check=tkinter.Button(root, text="check", command=check_word)
+check.grid(column=0, row=1, padx=50, pady=50)
+
+win_lose=tkinter.Label(root, text="will you win or lose?")
+win_lose.grid(column=1, row=1, padx=50, pady=50)
+
+root.mainloop()
