@@ -2,45 +2,68 @@ import tkinter
 import math
 import tkinter.messagebox
 
+
 root = tkinter.Tk()
 root.geometry("600x500")
 root.title("Notes")
 
+
 items=[]
 
-def Note1_save():
 
-    items.append(note_1.get()+note_1_2.get())
-    print(items[0])
+note_gallery=tkinter.Label(root)
+note_gallery.grid(row=1, column=0, pady=20)
+
+
+def delete():
     
+    if delete_entry.get() in items:
+        
+        items.remove(delete_entry.get())
+
+
+
+
+        print(items)
+
+
+def Note_save1():
+
+
+    note_gallery.config(text="")
+
+
+    items.append(note_1.get())
+    
+    str=""
+
+
+    for i in items:
+        str = str + i + "\n"
+        
+    note_gallery.config(text=str)
+        
+
+
+delete_button=tkinter.Button(root, text="🗑️", command=delete)
+delete_button.grid(row=2, column=1)
+
+
+
+
+delete_entry=tkinter.Entry(root)
+delete_entry.grid(row=2, column=0, pady=20)
+
 
 note_1=tkinter.Entry(root, width=50)
 note_1.grid(row=0, column=0)
-note_1_2=tkinter.Entry(root, width=50)
-note_1_2.grid(row=1, column=0)
 
-note1save=tkinter.Button(root, text="save", command=Note1_save)
+
+
+
+note1save=tkinter.Button(root, text="save", command=Note_save1)
 note1save.grid(row=0, column=1)
 
-gap=tkinter.Button(root, text="------------------------------------------------------")
-gap.grid(row=2,column=0,pady=20)
-
-def Note2_save():
-
-
-    items.append(note_2.get()+note_2_2.get())
-    print(items[1])
-    
-
-
-note_2=tkinter.Entry(root, width=50)
-note_2.grid(row=3, column=0)
-note_2_2=tkinter.Entry(root, width=50)
-note_2_2.grid(row=4, column=0)
-
-
-note2save=tkinter.Button(root, text="save", command=Note2_save)
-note2save.grid(row=3, column=1)
 
 
 
