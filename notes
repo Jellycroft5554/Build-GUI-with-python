@@ -8,63 +8,169 @@ root.geometry("600x500")
 root.title("Notes")
 
 
-items=[]
+U1=Jim
 
 
-note_gallery=tkinter.Label(root)
-note_gallery.grid(row=1, column=0, pady=20)
+pass[U1,P1,U2,P2,U3,P3,U4,P4,U5,P5]
 
 
-def delete():
-    
-    if delete_entry.get() in items:
-        
-        items.remove(delete_entry.get())
+def run1():
 
 
+    if U1 == ""
 
 
-        print(items)
+        items=[]
 
 
-def Note_save1():
+        note_gallery=tkinter.Label(root)
+        note_gallery.grid(row=1, column=0, pady=20)
 
 
-    note_gallery.config(text="")
+        def delete():
+            
+            if delete_entry.get() in items:
+                
+                dele=delete_entry.get()
 
 
-    items.append(note_1.get())
-    
-    str=""
-
-
-    for i in items:
-        str = str + i + "\n"
-        
-    note_gallery.config(text=str)
-        
-
-
-delete_button=tkinter.Button(root, text="🗑️", command=delete)
-delete_button.grid(row=2, column=1)
+                items.remove(dele)
 
 
 
 
-delete_entry=tkinter.Entry(root)
-delete_entry.grid(row=2, column=0, pady=20)
+                print(items)
 
 
-note_1=tkinter.Entry(root, width=50)
-note_1.grid(row=0, column=0)
+                refresh()
 
 
 
 
-note1save=tkinter.Button(root, text="save", command=Note_save1)
-note1save.grid(row=0, column=1)
+        def Note_save1():
+
+
+            note_gallery.config(text="")
+
+
+            items.append(note_1.get())
+            
+            str=""
+
+
+            for i in items:
+                str = str + i + "\n"
+                
+                
+            note_gallery.config(text=str)
+
+
+        def refresh():
+
+
+            note_gallery.config(text="")
+            
+            str=""
+
+
+
+
+            for i in items:
+                str = str + i + "\n"
+                
+                
+            note_gallery.config(text=str)
+
+
+        def edit():
+
+
+            if edit_entry.get() in items:
+
+
+                it=items.index(edit_entry.get())
+
+
+                items[it]=new_edit_entry.get()
+
+
+                print(items)
+
+
+            refresh()
+
+
+
+
+
+
+        delete_button=tkinter.Button(root, text="🗑️", command=delete)
+        delete_button.grid(row=2, column=1)
+
+
+        delete_entry=tkinter.Entry(root)
+        delete_entry.grid(row=2, column=0, pady=20)
+
+
+
+
+        note_1=tkinter.Entry(root, width=50)
+        note_1.grid(row=0, column=0)
+
+
+        note1save=tkinter.Button(root, text="save", command=Note_save1)
+        note1save.grid(row=0, column=1)
+
+
+
+
+        edit_button=tkinter.Button(root, text="edit", command=edit)
+        edit_button.grid(row=4, column=1)
+
+
+        edit_entry=tkinter.Entry(root)
+        edit_entry.grid(row=3, column=0, pady=20)
+
+
+        new_edit_entry=tkinter.Entry(root)
+        new_edit_entry.grid(row=4, column=0, pady=20)
+
+
+
+
+
+
+username=tkinter.Label(root, text="username")
+username.grid(row=6, column=0, pady=20)
+
+
+
+
+username_1=tkinter.Entry(root)
+username_1.grid(row=6, column=1, pady=20)
+
+
+
+
+password=tkinter.Label(root, text="password")
+password.grid(row=7, column=0, pady=20)
+
+
+
+
+password_1=tkinter.Entry(root)
+password_1.grid(row=7, column=1, pady=20)
+
+
+
+
+login=tkinter.Button(root, text="login", command=run1)
+login.grid(row=7, column=2, pady=20)
+
+
 
 
 
 
 root.mainloop()
+
