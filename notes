@@ -8,16 +8,32 @@ root.geometry("600x500")
 root.title("Notes")
 
 
-U1=Jim
+U1="Jim"
+P1="123"
 
 
-pass[U1,P1,U2,P2,U3,P3,U4,P4,U5,P5]
+U2="Jack"
+P2="1423"
+
+
+U3="Ben"
+P3="123"
+
+
+U4="James"
+P4="123"
+
+
+U5="Ryan"
+P5="2013"
 
 
 def run1():
 
 
-    if U1 == ""
+    if U1 == username_1.get() and P1 == password_1.get() or U2 == username_1.get() and P2 == password_1.g
+
+
 
 
         items=[]
@@ -173,4 +189,3 @@ login.grid(row=7, column=2, pady=20)
 
 
 root.mainloop()
-
