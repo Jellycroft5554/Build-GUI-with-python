@@ -2,46 +2,31 @@ import tkinter
 import math
 import tkinter.messagebox
 
-
 root = tkinter.Tk()
 root.geometry("600x500")
 root.title("Notes")
 
+U1=""
+P1=""
 
-U1="Jim"
-P1="123"
+def run():
 
+    global U1
+    global P1
 
-U2="Jack"
-P2="1423"
-
-
-U3="Ben"
-P3="123"
-
-
-U4="James"
-P4="123"
-
-
-U5="Ryan"
-P5="2013"
-
+    U1=username_12.get()
+    P1=password_12.get()
 
 def run1():
 
+    if U1 == username_1.get() and P1 == password_1.get():
 
-    if U1 == username_1.get() and P1 == password_1.get() or U2 == username_1.get() and P2 == password_1.g
-
-
-
+        print("hello")
 
         items=[]
 
-
         note_gallery=tkinter.Label(root)
         note_gallery.grid(row=1, column=0, pady=20)
-
 
         def delete():
             
@@ -49,143 +34,99 @@ def run1():
                 
                 dele=delete_entry.get()
 
-
                 items.remove(dele)
-
-
-
 
                 print(items)
 
-
                 refresh()
-
-
-
 
         def Note_save1():
 
-
             note_gallery.config(text="")
-
 
             items.append(note_1.get())
             
             str=""
 
-
             for i in items:
                 str = str + i + "\n"
                 
                 
             note_gallery.config(text=str)
 
-
         def refresh():
-
 
             note_gallery.config(text="")
             
             str=""
 
-
-
-
             for i in items:
                 str = str + i + "\n"
                 
                 
             note_gallery.config(text=str)
 
-
         def edit():
-
 
             if edit_entry.get() in items:
 
-
                 it=items.index(edit_entry.get())
-
 
                 items[it]=new_edit_entry.get()
 
-
                 print(items)
 
-
             refresh()
-
-
-
-
-
 
         delete_button=tkinter.Button(root, text="🗑️", command=delete)
         delete_button.grid(row=2, column=1)
 
-
         delete_entry=tkinter.Entry(root)
         delete_entry.grid(row=2, column=0, pady=20)
-
-
-
 
         note_1=tkinter.Entry(root, width=50)
         note_1.grid(row=0, column=0)
 
-
         note1save=tkinter.Button(root, text="save", command=Note_save1)
         note1save.grid(row=0, column=1)
-
-
-
 
         edit_button=tkinter.Button(root, text="edit", command=edit)
         edit_button.grid(row=4, column=1)
 
-
         edit_entry=tkinter.Entry(root)
         edit_entry.grid(row=3, column=0, pady=20)
-
 
         new_edit_entry=tkinter.Entry(root)
         new_edit_entry.grid(row=4, column=0, pady=20)
 
+sign=tkinter.Label(root, text="sign up")
+sign.grid(row=0, column=0, pady=20)
 
+username1=tkinter.Label(root, text="username")
+username1.grid(row=1, column=0, pady=20)
 
+username_12=tkinter.Entry(root)
+username_12.grid(row=1, column=1, pady=20)
 
+password1=tkinter.Label(root, text="password")
+password1.grid(row=2, column=0, pady=20)
 
+password_12=tkinter.Entry(root)
+password_12.grid(row=2, column=1, pady=20)
 
-username=tkinter.Label(root, text="username")
-username.grid(row=6, column=0, pady=20)
+signin=tkinter.Button(root, text="signin", command=run)
+signin.grid(row=2, column=2, pady=20)
 
-
-
+log=tkinter.Label(root, text="log in")
+log.grid(row=0, column=3, pady=20)
 
 username_1=tkinter.Entry(root)
-username_1.grid(row=6, column=1, pady=20)
-
-
-
-
-password=tkinter.Label(root, text="password")
-password.grid(row=7, column=0, pady=20)
-
-
-
+username_1.grid(row=2, column=3, pady=20)
 
 password_1=tkinter.Entry(root)
-password_1.grid(row=7, column=1, pady=20)
-
-
-
+password_1.grid(row=1, column=3, pady=20)
 
 login=tkinter.Button(root, text="login", command=run1)
-login.grid(row=7, column=2, pady=20)
-
-
-
-
-
+login.grid(row=2, column=5, pady=20)
 
 root.mainloop()
