@@ -42,6 +42,15 @@ def subtract_images():
     cv2.destroyAllWindows()
 
 
+def erode1():
+    image = cv2.imread("pika.png", 1)
+    kernel = np.ones((20, 20), np.uint8)
+    image = cv2.erode(image, kernel)
+    cv2.imshow("Eroded image", image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
 Resize=Button(root, text="Resize", command=resize_image)
 Resize.pack(pady=10)
 
@@ -52,6 +61,10 @@ Add.pack(pady=10)
 
 Sub=Button(root, text="Subtract", command=subtract_images) 
 Sub.pack(pady=10)
+
+
+erode=Button(root, text="erode", command=erode1)
+erode.pack(pady=10)
 
 
 root.mainloop()
